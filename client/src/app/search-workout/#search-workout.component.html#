@@ -1,0 +1,14 @@
+<h1> Search Workouts </h1>
+
+<input type="text" class="formform>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+            <input type="text" class="form-control" name="searchString" placeholder="Type to search on workout..." [(ngModel)]="searchString">
+         </div>
+        <div class="input-group">
+            <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+            <input type="text" class="form-control" name="searchString" placeholder="Type to search on workout..." [(ngModel)]="searchString">
+         </div>
+    </div>
+</form>

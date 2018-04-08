@@ -1,0 +1,12 @@
+<div *ngIf="workout">
+<div class="jumbotron">
+  <h1 class="display-4">{{workout.title}}</h1>
+  <h3> {{ workout.summary }} </h3>
+  <button type="button" class="btn btn-primary"> {{ workout.trainer }}    </button> 
+  <button type="button" class="btn btn-info">   {{ workout.type }} </button>
+  <hr class="my-4">
+  <h3> Description</h3>
+  <p>
+  <p [innerHTML]="workout.description"></p>
+</div>
+</div>

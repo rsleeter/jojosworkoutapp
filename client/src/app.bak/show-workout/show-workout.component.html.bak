@@ -1,0 +1,76 @@
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+$('#myList a').on('click', function (e) {
+  e.preventDefault() 
+  $(this).tab('show')
+})
+</script>
+
+
+ 
+<form>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+            <input type="text" class="form-control" name="searchString" placeholder="Type to search on workout..." [(ngModel)]="searchString">
+         </div>
+    </div>
+</form>
+
+<div class="row">
+  <div class="col-4">
+    <div class="list-group" id="myList" role="tablist">
+        <a  *ngFor="let workout of workouts | filter:{ title: searchString, description: searchString}: false "  class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="list"  routerLink="/detail/{{workout._id}}"  role="tab" >
+
+            <div  class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{workout.title}}</h5>
+            </div>
+
+            <p class="mb-1">{{workout.description}}</p>
+
+           <div class="d-flex w-100 justify-content-between">
+               <small>read more...</small>
+               <div> 
+                <i title="Edit" class="fas fa-edit" (click)="editWorkout(workout)" aria-hidden="true"></i>
+                <i (click)="setDelete(workout)" data-toggle="modal" data-target="#deleteModal" title="Delete" class="fas fa-trash-alt" aria-hidden="true"></i>
+               </div>
+            </div>
+       </a>
+    </div>
+  </div>
+
+  <div class="col-8">
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="list-home-list"> ....
+        <p id="demo"></p>
+
+       </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Workout</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure ?
+      </div>
+      <div class="modal-footer">
+        <button #closeBtn (click)="unsetDelete()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button (click)="deleteWorkout()" type="button" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

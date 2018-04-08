@@ -1,0 +1,47 @@
+import { Injectable } from '@angular/core';
+import { Subject }    from 'rxjs/Subject';
+import { Workout } from '../models/workout.model';
+
+@Injectable()
+export class CommonService {
+
+	public workoutAdded_Observable = new Subject();
+	public workoutEdit_Observable = new Subject();
+        public workoutShow_Observable = new Subject();
+	public workout_to_be_edited;
+	public workout_to_show;
+
+	constructor(){
+		this.workout_to_be_edited = new Workout();
+	}
+
+	notifyWorkoutEdit(){
+		this.workoutEdit_Observable.next();
+		console.log("notifyworkoutedit");
+	}
+
+	setWorkoutToEdit(workout: Workout){
+		this.workout_to_be_edited = workout;
+		console.log("setworkoutToEdit");
+		this.notifyWorkoutEdit();
+	}
+
+
+	setWorkoutToShow(workout: Workout){
+	      this.workout_to_show = workout;
+	      this.notifyWorkoutShow();
+       }
+
+	notifyWorkoutAddition(){
+		this.workoutAdded_Observable.next();
+	}
+        
+	notifyWorkoutShow(){
+		this.workoutShow_Observable.next();
+
+       }
+
+       endWorkoutAdd(){
+          this.workoutAdded_Observable.complete();
+       }
+}

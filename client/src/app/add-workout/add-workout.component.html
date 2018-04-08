@@ -1,0 +1,66 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Workout</h5>
+                <button type="button" #closeBtn class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Title</label>
+                        <input name="title" type="text" [(ngModel)]="workout.title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter title">
+                    </div>
+                    <div class="form-group">
+                        <label for="summary1">Summary</label>
+                        <textarea name="summary" [(ngModel)]="workout.summary" class="form-control" id="summary" placeholder="Summary of Workout">
+                        </textarea>
+                    </div>
+		    <div class="row">
+		      <div class="col">
+                    <div class="form-group">
+                        <label for="trainer">Trainer</label>
+                        <select name="trainer"  [(ngModel)]="workout.trainer" class="form-control" id="trainer" placeholder="Choose ...">
+			  <option> Jojo </option>
+			  <option> Jill </option>
+			  <option> Sandra </option>
+			  <option> Ashley </option>
+			  <option> Laura </option>
+			</select>
+                    </div>
+		    </div>
+		    <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Type</label>
+                        <select name="Type" [(ngModel)]="workout.type" class="form-control" id="type" placeholder="Choose ... " > >
+			  <option> Personal Training </option>
+			  <option> Circuit </option>
+			  <option> DIG </option>
+			  <option> Trifecta </option>
+			  <option> Challenge </option>
+			  <option> Tabata </option>
+			  <option> TRX Dig </option>
+			  <option> Any </option>
+			</select>
+                    </div>
+		    </div>
+		    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Description</label>
+                        <textarea rows="10" name="description" [(ngModel)]="workout.description" class="form-control" id="exampleInputPassword1" placeholder="Description">
+                        </textarea>
+                    </div>
+
+                   
+
+                    <button (click)="addWorkout()" type="button" class="btn btn-primary">Add</button>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
